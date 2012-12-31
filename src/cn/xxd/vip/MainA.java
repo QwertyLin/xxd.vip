@@ -2,10 +2,14 @@ package cn.xxd.vip;
 
 import java.io.IOException;
 
+import net.youmi.android.appoffers.YoumiOffersManager;
+
 import q.util.CodeUtil;
 import q.util.HttpUtil;
+import ad.AdManager;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 
 public class MainA extends Activity {
@@ -13,25 +17,26 @@ public class MainA extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
         
-        try {
-			String result = HttpUtil.get("http://www.xxd.cn/vip_ex.php");
-			if(result.startsWith("r:")){
-				result = result.substring("r:".length());
-				System.out.println(result);
-			}
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+        //
+        //startActivity(new Intent(this, TaskA.class));
         
-       /* try {
-			System.out.println(CodeUtil.desEncode("qqqqqvip", "linhq___123456789"));
+        AdManager.init(this);
+        
+        startActivity(new Intent(this, HomeA.class));
+        
+        
+        
+        /*try {
+        	String str = CodeUtil.desEncode("qqqqqvip", "linhq___123456789");
+			System.out.println(str.length());
+			str = CodeUtil.desDecode("qqqqqvip", str);
+			System.out.println(str);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
+        finish();
     }
 
 }
