@@ -24,6 +24,7 @@ public class HomeA extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.layout_home);
+		mOfferCount = AdManager.offerPointQuery(HomeA.this);
 		//		
 		findViewById(R.id.exchange_exchange).setOnClickListener(this);
 		
@@ -107,10 +108,8 @@ public class HomeA extends Activity implements OnClickListener {
 		}
 	}
 	
-	
-	
 	private void onClickExchange(){
-		new AsyncHttpHelper().get(this, Config.URL_EXCHANGE, AsyncHttpHelper.NO_CACHE, new AsyncHttpHelper.OnAsyncHttpListener() {
+		new AsyncHttpHelper().get(this, HomeExS.getUrlEx(this), AsyncHttpHelper.NO_CACHE, new AsyncHttpHelper.OnAsyncHttpListener() {
 			
 			@Override
 			public boolean onAsyncHttpVerify(String content) {

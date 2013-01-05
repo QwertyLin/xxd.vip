@@ -1,11 +1,16 @@
 package cn.xxd.vip;
 
 import android.content.Context;
+import q.util.AppUtil;
 import q.util.CodeUtil;
 import q.util.WifiUtil;
 import cn.xxd.vip.util.Config;
 
 public class HomeExS {
+	
+	public static final String getUrlEx(Context ctx){
+		return Config.URL_EXCHANGE + "?v=" + AppUtil.getVersion(ctx);
+	}
 	
 	public static final boolean countVerify(String str){
 		return str.startsWith(Config.PREFIX_COUNT);
